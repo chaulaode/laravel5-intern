@@ -51,7 +51,7 @@ class BlogRepository extends BaseRepository
 		$post->summary = $inputs['summary'];	
 		$post->content = $inputs['content'];	
 		$post->slug = $inputs['slug'];
-		$post->active = isset($inputs['active']);	
+		$post->active = $inputs['active']; //isset($inputs['active']);
 		if($user_id) $post->user_id = $user_id;
 
 		$post->save();

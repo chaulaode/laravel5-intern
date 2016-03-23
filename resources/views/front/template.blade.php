@@ -75,7 +75,7 @@
 						@else
 							@if(session('statut') == 'visitor')
 								<li {!! Request::is('auth/login') ? 'class="active"' : '' !!}>
-									{!! link_to('auth/login', trans('front/site.connection')) !!}
+									{!! link_to('login', trans('front/site.connection')) !!}
 								</li>
 							@else
 								@if(session('statut') == 'admin')

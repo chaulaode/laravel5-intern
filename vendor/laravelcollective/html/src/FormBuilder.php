@@ -5,6 +5,7 @@ use Illuminate\Routing\UrlGenerator;
 use Illuminate\Session\Store as Session;
 use Illuminate\Support\Traits\Macroable;
 use Illuminate\Support\Collection;
+use Illuminate\Support\HtmlString;
 
 class FormBuilder {
 
@@ -513,7 +514,8 @@ class FormBuilder {
 
     $list = implode('', $html);
 
-    return "<select{$options}>{$list}</select>";
+    //return "<select{$options}>{$list}</select>";
+    return $this->toHtmlString("<select{$options}>{$list}</select>");
   }
 
   /**
@@ -1083,6 +1085,11 @@ class FormBuilder {
   protected function transformKey($key)
   {
     return str_replace(['.', '[]', '[', ']'], ['_', '', '.', ''], $key);
+  }
+
+  protected function toHtmlString($html)
+  {
+    return new HtmlString($html);
   }
 
   /**

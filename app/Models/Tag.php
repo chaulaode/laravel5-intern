@@ -10,6 +10,7 @@ class Tag extends Model  {
 	 * @var string
 	 */
 	protected $table = 'tags';
+	protected $guarded = array();
 
 	/**
 	 * Many to Many relation

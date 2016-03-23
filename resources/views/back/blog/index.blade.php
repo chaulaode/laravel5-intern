@@ -17,12 +17,12 @@
       <table class="table">
         <thead>
           <tr>
-            <th>{{ trans('back/blog.title') }} <a href="#" name="title" class="order"><span class="fa fa-fw fa-unsorted"></lspan></a></th>
-            <th>{{ trans('back/blog.date') }} <a href="#" name="created_at" class="order"><span class="fa fa-fw fa-sort-desc"></th>
-            <th>{{ trans('back/blog.published') }} <a href="#" name="active" class="order"><span class="fa fa-fw fa-unsorted"></th> 
+            <th>{{ trans('back/blog.title') }} <a href="#" name="title" class="order"><span class="fa fa-fw fa-unsorted"></span></a></th>
+            <th>{{ trans('back/blog.date') }} <a href="#" name="created_at" class="order"><span class="fa fa-fw fa-sort-desc"></span></a></th>
+            <th>{{ trans('back/blog.published') }} <a href="#" name="active" class="order"><span class="fa fa-fw fa-unsorted"></span></a></th>
             @if(session('statut') == 'admin')
-              <th>{{ trans('back/blog.author') }} <a href="#" name="username" class="order"><span class="fa fa-fw fa-unsorted"></th>            
-              <th>{{ trans('back/blog.seen') }} <a href="#" name="posts.seen" class="order"><span class="fa fa-fw fa-unsorted"></th>
+              <th>{{ trans('back/blog.author') }} <a href="#" name="username" class="order"><span class="fa fa-fw fa-unsorted"></span></a></th>
+              <th>{{ trans('back/blog.seen') }} <a href="#" name="posts.seen" class="order"><span class="fa fa-fw fa-unsorted"></span></a></th>
             @endif
           </tr>
         </thead>
@@ -109,7 +109,7 @@
           tri = 'asc';
         }
         // Wait icon
-        $('.breadcrumb li').append('<span id="tempo" class="fa fa-refresh fa-spin"></span>');       
+        $('.breadcrumb li').append('<span id="tempo" class="fa fa-refresh fa-spin"></span>');
         // Send ajax
         $.ajax({
           url: 'blog/order',

@@ -1,5 +1,8 @@
 <?php namespace App\Http\Requests;
 
+
+use DebugBar\DebugBar;
+
 class UserUpdateRequest extends Request {
 
 	/**
@@ -9,9 +12,10 @@ class UserUpdateRequest extends Request {
 	 */
 	public function rules()
 	{
-		$id = $this->user->id;
+
+		$id = $this->id;
 		return $rules = [
-			'username' => 'required|max:30|alpha|unique:users,username,' . $id, 
+			'username' => 'required|max:30|alpha|unique:users,username,' . $id,
 			'email' => 'required|email|unique:users,email,' . $id
 		];
 	}

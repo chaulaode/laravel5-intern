@@ -23,6 +23,7 @@ class AdminController extends Controller {
      */
     public function __construct(UserRepository $user_gestion)
     {
+        $this->middleware('auth');
 		$this->user_gestion = $user_gestion;
     }
 
@@ -39,12 +40,7 @@ class AdminController extends Controller {
 		BlogRepository $blog_gestion,
 		CommentRepository $comment_gestion)
 	{
-		die('hello');
-	}
-
-	public function hello()
-	{
-		die('àdafds');
+		return view('admin.index');
 	}
 
 	/**

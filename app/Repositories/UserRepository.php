@@ -156,7 +156,7 @@ class UserRepository extends BaseRepository
 	 */
 	public function update($inputs, $user)
 	{
-		$this->save($user, $inputs);
+		$this->save($this->getById($user), $inputs);
 	}
 
 	/**
@@ -212,5 +212,13 @@ class UserRepository extends BaseRepository
 		$user->confirmation_code = null;
 		$user->save();
 	}
+
+    /**
+     * @param $id
+     * @return mixed
+     */
+    public function find($id){
+        return $this->getById($id);
+    }
 
 }

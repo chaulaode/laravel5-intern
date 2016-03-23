@@ -2,10 +2,9 @@
 
 // Home
 Route::get('/', [
-	'uses' => 'Frontend\HomeController@index',
+	'uses' => 'BlogController@indexFront',
 	'as' => 'home'
 ]);
-
 
 // Admin
 Route::get('admin', [
@@ -13,19 +12,11 @@ Route::get('admin', [
 	'as' => 'admin',
 ]);
 
-// Admin
-Route::get('admin/hello', [
-	'uses' => 'Admin\AdminController@hello',
-	'as' => 'hello',
-]);
-
-
 Route::get('medias', [
-	'uses' => 'AdminController@filemanager',
+	'uses' => 'Admin\AdminController@filemanager',
 	'as' => 'medias',
 	'middleware' => 'redac'
 ]);
-
 
 // Blog
 Route::get('blog/order', 'BlogController@indexOrder');
@@ -46,22 +37,10 @@ Route::resource('comment', 'CommentController', [
 Route::put('commentseen/{id}', 'CommentController@updateSeen');
 Route::put('uservalid/{id}', 'CommentController@valid');
 
-
 // Contact
 Route::resource('contact', 'ContactController', [
 	'except' => ['show', 'edit']
 ]);
-
-
-// User
-Route::get('user/sort/{role}', 'UserController@indexSort');
-
-Route::get('user/roles', 'UserController@getRoles');
-Route::post('user/roles', 'UserController@postRoles');
-
-Route::put('userseen/{user}', 'UserController@updateSeen');
-
-Route::resource('user', 'UserController');
 
 // Auth
 Route::controllers([
@@ -69,7 +48,29 @@ Route::controllers([
 	'password' => 'Auth\PasswordController',
 ]);
 
-// product
-Route::resource('product', 'ProductController', [
-	'except' => ['create', 'show']
-]);
+//Language
+Route::get('language','Frontend\HomeController@language');
+
+//Login
+Route::get('login',function(){
+   return view('admin.login');
+});
+
+//Post
+Route::resource('admin/posts','Backend\PostController');
+//Category
+Route::resource('admin/categories','Backend\CategoryController');
+//Pages
+Route::resource('admin/pages','Backend\PageController');
+//User
+Route::resource('admin/users','Backend\UserController');
+//Message
+Route::resource('admin/messages','Backend\MessageController');
+//Comment
+Route::resource('admin/comments','Backend\CommentController');
+//Tag
+Route::resource('admin/tags','Backend\TagController');
+//Role
+Route::resource('admin/roles','Backend\RoleController');
+//Menu
+Route::resource('admin/menu','Backend\MenuController');

@@ -4,7 +4,7 @@
 
 ### Installation ###
 
-* `git clone https://github.com/chaulaode/laravel-intern.git projectname`
+* `git clone https://github.com/joyzonsun/laravel-intern.git projectname`
 * `cd projectname`
 * `composer install`
 * `php artisan key:generate`

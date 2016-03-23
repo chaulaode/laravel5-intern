@@ -20,7 +20,7 @@ class FormBuilder extends \Collective\Html\FormBuilder {
 
 	public function control($type, $colonnes, $nom, $errors, $label = null, $valeur = null, $pop = null, $placeholder = '')
 	{
-		$attributes = ['class' => 'form-control', 'placeholder' => $placeholder];
+		$attributes = ['class' => 'form-control', 'placeholder' => $placeholder, 'id' => $nom];
 		return sprintf('
 			<div class="form-group %s %s">
 			  %s

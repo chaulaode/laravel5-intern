@@ -13,17 +13,19 @@ use App\Repositories\UserRepository;
 use App\Services\MaxValueDelay;
 use App\Jobs\SendMail;
 
+/**
+ * Class AuthController
+ * @package App\Http\Controllers\Auth
+ */
 class AuthController extends Controller
 {
 
 	use AuthenticatesAndRegistersUsers;
 
-	/**
-	 * Create a new authentication controller instance.
-	 *
-	 * @return void
-	 */
-	public function __construct()
+    /**
+     * AuthController constructor.
+     */
+    public function __construct()
 	{
 		$this->middleware('guest', ['except' => 'getLogout']);
 	}
@@ -45,7 +47,7 @@ class AuthController extends Controller
 
 		if($maxValueDelay->check($logValue))
 		{
-			return redirect('/auth/login')
+			return redirect('/login')
 			->with('error', trans('front/login.maxattempt'));
 		}
 
@@ -59,7 +61,7 @@ class AuthController extends Controller
 		if(!$auth->validate($credentials)) {
 			$maxValueDelay->increment($logValue);	
 
-			return redirect('/auth/login')
+			return redirect('/login')
 				->with('error', trans('front/login.credentials'))
 				->withInput($request->only('log'));
 		}
@@ -73,12 +75,12 @@ class AuthController extends Controller
 				$request->session()->forget('user_id');
 			}
 
-			return redirect('/');
+			return redirect('/admin');
 		}
 		
 		$request->session()->put('user_id', $user->id);	
 
-		return redirect('/auth/login')->with('error', trans('front/verify.again'));			
+		return redirect('/login')->with('error', trans('front/verify.again'));
 	}
 
 
